@@ -1,0 +1,126 @@
+#audio {
+    display: inline !important;
+    position: absolute;
+    z-index: 9999;
+}
+
+#audio_controls {
+    display: none;
+}
+
+.splashy {
+    position: absolute;
+    top:20px;
+    left:20px;
+    width: 75vw;
+    height: 90vh;
+    transition-property: opacity;
+    transition-duration: 1.5s;
+    opacity: 1;
+    background-color: #5b7271;
+    padding: 20px;
+    z-index: 9999;
+    background-image: linear-gradient(#9999dd 10%, #558 90%);
+    font-size: 1.2em !important;
+    font-family: Helvetica, Arial, serif;
+    border-radius: 30px;
+}
+
+h1, h2, h3 {
+    font-family: "Sigmar One", cursive;
+    text-shadow: 2px 2px #7e6464;
+}
+
+#splash {
+    color: #272f4d;
+    text-shadow: 2px 2px #5b6d94;
+    background-color: transparent;
+    background-image: none;
+    /*text-shadow: none;*/
+}
+
+#splash p {
+    color: #7e6464;
+    text-shadow: none;
+}
+
+#chart img {
+    margin-top: 25px;
+}
+
+.splashy section p {
+    margin-bottom: -10px !important;
+}
+
+#go_div {
+    margin-top: 2em;
+    font-size: 1.2em;
+    opacity: 1;
+}
+
+#go_button {
+    border: 2px solid #272f4d;
+    border-radius: 1em;
+    background-color: #7e6464;
+    padding: 0.8em;
+    color: #272f4d;
+    font-weight: bold;
+}
+
+#user_name span {
+    color: #0eb5d6;
+    margin-right: 10px;
+}
+
+#help, #chart, #about {
+    opacity: 0;
+}
+
+#chart {
+    padding: 0;
+    width: 1683px;
+    /*left: 0;*/
+    background-color: #aaa;
+    background-image: none;
+}
+#chart p {
+    padding-left: 10px;
+}
+.griddy {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.griddy_child {
+    /*border: 1px solid;*/
+}
+.griddy h3 {
+    margin-bottom: .75em;
+}
+.griddy ul {
+    margin-top: .2em;
+    padding-left: 0;
+}
+.griddy li:nth-child(odd) {
+    /*background-color: #aa9999;*/
+}
+.griddy li:nth-child(even) {
+    /*background-color: #887777;*/
+}
+.griddy li {
+    width: 100%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: auto auto;
+    border-bottom: 1px dotted;
+    margin-bottom: 0.5em;
+}
+.griddy li span {
+    text-align: right;
+}
+.griddy li strong {
+}
+
+.griddy .notice {
+    color: #cca933;
+}

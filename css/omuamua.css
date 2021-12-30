@@ -1,0 +1,258 @@
+:root {
+    --up_top_color: pink;
+    --up_bottom_color: blue;
+    --down_top_color: blue;
+    --down_bottom_color: #d41;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    background-color: #000;
+    overflow: hidden;
+    /*background-image: url('https://greenfacelabs.com/three/img/stars.gif');*/
+}
+.show_inline {
+    display: inline !important;
+}
+
+.show_block {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.dg.ac {
+    z-index: 9999 !important;
+}
+#flat_div {
+    position: absolute;
+    top: 30vh;
+    height: 60vh;
+    width: 99vw;
+    background-color: transparent !important;
+    background-image: none !important;
+    z-index: 1;
+    box-sizing: border-box;
+    padding-left: 36px;
+    padding-right: 36px;
+
+    text-align: center;
+    /*display: none;*/
+}
+#flat_div > div {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+canvas {
+    position: absolute;
+    z-index: 999;
+}
+
+#tweet, #user {
+    transition-property: opacity;
+    transition-duration: 5s;
+    opacity: 0;
+}
+
+#tweet {
+    position: relative;
+    overflow: hidden;
+    border-radius: 45px;
+    border: 0px dotted #888;
+    /*margin: 36px;*/
+    /*min-height: 585px;*/
+    font-size: 3em;
+    /* padding: 25px; */
+}
+#tweet_text {
+    text-align: center;
+    /*margin: 25px;*/
+    position: relative;
+    z-index: 999;
+    /*padding-top: 180px;*/
+}
+#tweet span {
+    text-shadow: 2px 2px #000;
+}
+#tweet.Down span {
+    color: #0df90d;
+    text-shadow: 2px 2px #d8e84c;
+    /*color: #417940 !important;*/
+}
+#tweet.Up span {
+    color: #f72a20;
+    text-shadow: 2px 2px #1e50d4;
+    /*color: #bb422f !important;*/
+}
+#tweet.Default span {
+    color: blue !important;
+    text-shadow: orange !important;
+}
+#user {
+    position: relative;
+    color: #fff;
+    font-family: Sigmar One;
+    padding-right: 250px;
+    /*padding-bottom: 10em;*/
+    /*bottom: 25px;*/
+    /*width: 96%;*/
+}
+#user * {
+    float: right;
+}
+#user div {
+    margin-right: 1em;
+}
+#user_location {
+    color: #dda;
+}
+#cmd_name {
+    display: none;
+    color: #0eb5d6;
+    margin-right: 10px;
+}
+
+#audio {
+    display: none;
+}
+
+.Init {
+    /*opacity: 0 !important;*/
+    /*font-size: 1px !important;*/
+}
+
+.Test, .Default {
+    /*font-family: Sigmar One;*/
+    font-family: Bungee Inline;
+
+    font-size: 2.2em !important;
+    color: #fff;
+    background-color: #ddd;
+    background-image: linear-gradient(#ee0, #aaf);
+}
+.Up_1 {
+    background-image: linear-gradient(var(--up_top_color) 50%, var(--up_bottom_color) 90%);
+    font-family: 'Oleo Script', cursive !important;
+    font-size: 3em !important;
+}
+.Up_2 {
+    background-image: linear-gradient(var(--up_top_color) 40%, var(--up_bottom_color) 90%);
+    font-family: Sigmar One;
+    font-size: 3em !important;
+}
+.Up_3 {
+    background-image: linear-gradient(var(--up_top_color) 30%, var(--up_bottom_color) 90%);
+    font-family: 'Shrikhand', cursive !important;
+    /*font-family: 'Rock Salt', cursive !important;*/
+    font-size: 3em !important;
+}
+.Up_4 {
+    background-image: linear-gradient(var(--up_top_color) 20%, var(--up_bottom_color) 90%);
+    font-family: 'Chewy', cursive !important;
+    font-size: 3em !important;
+}
+.Up_5 {
+    background-image: linear-gradient(var(--up_top_color) 10%, var(--up_bottom_color) 90%);
+    font-family: 'Amita', cursive !important;
+    font-size: 2.7em !important;
+}
+.Up_6 {
+    background-image: linear-gradient(var(--up_top_color) 0%, var(--up_bottom_color) 90%);
+    font-family: 'Lakki Reddy', cursive !important;
+    font-size: 3em !important;
+    line-height: 1.4em !important;
+}
+.Up_7 {
+    background-image: linear-gradient(var(--up_top_color) -10%, var(--up_bottom_color) 90%);
+    font-family: 'Freckle Face', cursive !important;
+    font-size: 3em !important;
+    line-height: 1.5em !important;
+}
+.Up_8 {
+    background-image: linear-gradient(var(--up_top_color) -20%, var(--up_bottom_color) 90%);
+    font-family: 'Oleo Script', cursive !important;
+    font-size: 3em !important;
+}
+.Up_9 {
+    background-image: linear-gradient(var(--up_top_color) -30%, var(--up_bottom_color) 90%);
+    font-family: 'Mystery Quest', cursive !important;
+    font-size: 3em !important;
+}
+.Up_10 {
+    background-image: linear-gradient(var(--up_top_color) -40%, var(--up_bottom_color) 90%);
+    font-family: 'Emilys Candy', cursive !important;
+    font-size: 3.3em !important;
+}
+.Up {
+    color: #1ed420;
+    text-shadow: 2px 2px #2a20f7;
+    background-color: #5a5;
+    /*background-image: linear-gradient(green, yellow);*/
+    /*font-family: 'Alfa Slab One', cursive !important;*/
+}
+.Down_1 {
+    background-image: linear-gradient(var(--down_top_color) 50%, var(--down_bottom_color) 90%);
+    font-family: 'Courier Prime', cursive !important;
+    font-size: 3em !important;
+}
+.Down_2 {
+    background-image: linear-gradient(var(--down_top_color) 40%, var(--down_bottom_color) 90%);
+    font-family: 'Metal Mania', cursive !important;
+    font-size: 3em !important;
+}
+.Down_3 {
+    background-image: linear-gradient(var(--down_top_color) 30%, var(--down_bottom_color) 90%);
+    font-family: 'Alfa Slab One', cursive !important;
+    font-size: 3em !important;
+}
+.Down_4 {
+    background-image: linear-gradient(var(--down_top_color) 20%, var(--down_bottom_color) 90%);
+    font-family: 'New Rocker', cursive !important;
+    font-size: 3em !important;
+}
+.Down_5 {
+    background-image: linear-gradient(var(--down_top_color) 10%, var(--down_bottom_color) 90%);
+    font-family: 'UnifrakturCook', cursive !important;
+    font-size: 3.5em !important;
+    letter-spacing: 2px;
+}
+.Down_6 {
+    background-image: linear-gradient(var(--down_top_color) 0%, var(--down_bottom_color) 90%);
+    font-family: 'Rye', cursive !important;
+    font-size: 3em !important;
+    line-height: 1.3em;
+}
+.Down_7 {
+    background-image: linear-gradient(var(--down_top_color) -10%, var(--down_bottom_color) 90%);
+    font-family: 'Frijole', cursive !important;
+    font-size: 3em !important;
+}
+.Down_8 {
+    background-image: linear-gradient(var(--down_top_color) -20%, var(--down_bottom_color) 90%);
+    font-family: 'Black Ops One', cursive !important;
+    font-size: 3em !important;
+}
+.Down_9 {
+    background-image: linear-gradient(var(--down_top_color) -30%, var(--down_bottom_color) 90%);
+    font-family: 'Creepster', cursive !important;
+    font-size: 3.5em !important;
+    letter-spacing: 4px;
+}
+.Down_10 {
+    background-image: linear-gradient(var(--down_top_color) -40%, var(--down_bottom_color) 90%);
+    font-family: 'Eater', cursive !important;
+    font-size: 2.5em !important;
+    /*color: #30303a !important;*/
+}
+.Down {
+    background-color: #f77;
+    color: #f90d0d;
+    text-shadow: 2px 2px #d8e84c;
+    /*background-image: linear-gradient(yellow 50%, red 90%);*/
+    /*font-family: 'Rock Salt', cursive;
+    font-family: 'Freckle Face', cursive;*/
+}
