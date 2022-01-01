@@ -170,6 +170,7 @@ const display_manager = {
             this.set_opacity(this.help,0)
             this.set_opacity(this.chart,0)
         } else {
+            this.splash.style.display=(this.is_going() ? "none" : "block")
             this.set_opacity(this.splash,(this.is_going() ? 0 : 1))
         }
     },
@@ -264,13 +265,13 @@ function jump() {
 function pause() {
     dbugger.print("Pausing",true)
     audio_manager.pause()
-    omuamua.move_ok = false;
+    omuamua.pause()
 }
 
 function resume() {
     dbugger.print("Resuming",true)
     audio_manager.resume()
-    omuamua.move_ok = true;
+    omuamua.resume();
 }
 
 function play_controls(key_code) {
@@ -366,6 +367,44 @@ document.getElementById("user_img").addEventListener("error", function (event) {
     // console.log(event)
     event.target.src=`${thumbnail_dir}interesting.jpg`
 })
+
+const more_buttons = document.getElementsByClassName("more_button")
+for(let i=0; i<more_buttons.length; i++) {
+    more_buttons[i].addEventListener("click", function (event) {
+        // console.log(event.target.getAttribute("target"))
+        const sections = document.getElementsByTagName("section")
+        for(let i=0;i<sections.length;i++) {
+            sections[i].style.opacity="0"
+            setTimeout(function() {
+                sections[i].style.display="none"
+            },500)
+        }
+        const targ = document.getElementById(event.target.getAttribute("target"))
+        setTimeout(function() {
+            targ.style.display="block"
+            setTimeout(function() {
+                targ.style.opacity="1"
+            },10)
+        },510)
+    })
+}
+
+const about_images = document.getElementsByClassName("about_img")
+for(let i=0; i<about_images.length; i++) {
+    about_images[i].addEventListener("click", function (event) {
+        const temp = document.getElementById("dialog");
+        const clon = temp.content.cloneNode(true);
+        document.body.appendChild(clon);
+        // console.log(event.target.src)
+        document.getElementById("dialog_img").src=event.target.src
+    })
+}
+
+function remove_dialog() {
+    document.getElementById("red_x").remove()
+    document.getElementById("img_dialog").remove()
+}
+
 
 window.onload = function() {
     // alert(`Window: ${window.innerHeight} Screen: ${screen.height}`)

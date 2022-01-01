@@ -156,19 +156,24 @@ const msg_handler = function(responseObject) {
     }
 }
 
+// const canvas_width=Math.min(1745,window.innerWidth)
+// const canvas_height=Math.min(982,window.innerHeight)
+const canvas_width=window.innerWidth
+const canvas_height=window.innerHeight
+
+// const aspect_ratio = window.innerWidth / window.innerHeight
+const aspect_ratio = canvas_width / canvas_height
+const camera = new THREE.PerspectiveCamera( 40, aspect_ratio, 2, 1000 );
 const init_camera_position = new THREE.Vector3(0,0,5)
 
-const scene = new THREE.Scene();
-const aspect_ratio = window.innerWidth / window.innerHeight
-const camera = new THREE.PerspectiveCamera( 40, aspect_ratio, 2, 1000 );
-
 //camera.translateY(3);
+const scene = new THREE.Scene();
 
 const canvas=document.getElementById("the_canvas");
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
+canvas.width=canvas_width
+canvas.height=canvas_height
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( canvas_width, canvas_height );
 renderer.domElement.setAttribute("id","the_canvas")
 //renderer.context="2d"
 document.body.appendChild( renderer.domElement );
@@ -268,9 +273,6 @@ class MovingObject {
         this.init_vector = new THREE.Vector3(this.outer_edge*Math.cos(this.init_angle),this.outer_edge*Math.sin(this.init_angle),this.init_z_position)
         this.item.position.copy(this.init_vector)
 
-        // this.end_edge = visibleWidthAtZDepth(this.end_z_position,camera)/2 + 3;    // 2 is width of box. todo: compute this value
-        //this.end_edge = 6;    // 2 is width of box. todo: compute this value
-
         this.end_angle = this.init_angle + Math.PI + Math.random() * this.target_range - this.target_range/2
         this.end_vector = new THREE.Vector3(this.end_edge*Math.cos(this.end_angle),this.end_edge*Math.sin(this.end_angle),this.end_z_position)
 
@@ -312,6 +314,8 @@ class MovingObject {
         this.rotation_limit.x  = 0
         this.rotation_limit.y = 0
         this.rotation_limit.z = 0
+        this.fade_out=false
+        this.fade_in=false
         this.move_ended = function() {
             dbugger.print("Move Ended")
         }
@@ -325,6 +329,7 @@ class MovingObject {
 
         this.item = new THREE.Mesh( this.geometry, this.material )
         this.item.scale.setScalar(this.scale_factor)
+        this.item.material.opacity=0
 
         scene.add( this.item );
         this.init()
@@ -334,22 +339,21 @@ class MovingObject {
         let force=false
         if(this.move_ok) {
             const distance_to = this.item.position.distanceTo(this.end_vector)
-            //dbugger.print(distance_to,force)
+            dbugger.print(distance_to,force)
             this.item.position.x += this.x_inc;
             this.item.position.y += this.y_inc;
             this.item.position.z += this.z_inc;
             if( distance_to < this.move_factor*100 ) {
                 this.move_ok=false
+                this.fade_out=true
                 dbugger.print(distance_to,force)
                 dbugger.print("Ended at: " + this.item.position.x + ", " + this.item.position.y + ", "+this.item.position.z,force);
                 this.move_ended(this)
-                // animation_ended()
             }
         }
     }
 
     switch_rotation_direction(axis) {
-        // switch direction of rotation
         this.rotation_inc[axis] *= -1
         dbugger.print(`Switching on ${axis} axis. Rotation: ${this.item.rotation[axis]}`,false)
     }
@@ -358,7 +362,6 @@ class MovingObject {
         const my_limit = this.rotation_limit[axis]
         const my_rotation = this.item.rotation[axis]
         if(my_limit!==0) {
-            // this.item.rotation[axis] += this.rotation_inc[axis];
             const diff = my_limit-Math.abs(my_rotation)
             const ratio = Math.max(diff/my_limit,.01)
             const rotation = ratio * this.rotation_inc[axis]
@@ -402,9 +405,14 @@ class MovingObject {
 
     start() {
         this.move_ok = true
+        this.fade_in=true
     }
 
-    stop() {
+    pause() {
+        this.move_ok = false
+    }
+
+    resume() {
         this.move_ok = true
     }
 
@@ -449,7 +457,7 @@ const omuamua_options = {
     geometry: new THREE.PlaneGeometry(2,4,num_vertices,num_vertices),
     material: new THREE.MeshStandardMaterial(),
     outer_edge: 15,
-    end_edge: 6,
+    end_edge: 8,
     scale_factor: 1,
     move_factor: .00075,
     target_range: Math.PI/10,
@@ -682,14 +690,27 @@ const animate = function () {
     if(reset_camera) {
         camera.position.lerp(init_camera_position,.01)
         const distance = camera.position.distanceTo(init_camera_position)
-        console.log(`Distance: ${distance}`)
-        if(distance<.05) {
+        // console.log(`Distance: ${distance}`)
+        if(distance<.1) {
             reset_camera=false
         }
     }
 
     meteor.move()
     omuamua.move()
+    if(omuamua.fade_out) {
+        omuamua.material.opacity-=.01
+        if(omuamua.material.opacity<=0) {
+            omuamua.fade_out=false
+        }
+    }
+
+    if(omuamua.fade_in) {
+        omuamua.material.opacity+=.01
+        if(omuamua.material.opacity>.99) {
+            omuamua.fade_in=false
+        }
+    }
 
     omuamua.rotate()
     white_stars.rotate()
