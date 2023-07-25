@@ -27,8 +27,9 @@
 }
 
 .flexer .img_div img {
-    border: 1px solid;
+    border: 1px solid #7e6464;
     margin-bottom: 3px;
+    border-radius: 20px;
 }
 
 .splashy {
@@ -36,14 +37,15 @@
     top:20px;
     left:20px;
     width: 75vw;
-    height: 90vh;
+    height: 95vh;
     /*transition-property: opacity;*/
     /*transition-duration: 1.5s;*/
     /*opacity: 1;*/
     background-color: #5b7271;
-    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     z-index: 9999;
-    background-image: linear-gradient(#9999dd 10%, #558 90%);
+    background-image: linear-gradient(#9999dd 10%, #231a54  90%);
     font-size: 1.2em !important;
     font-family: Helvetica, Arial, serif;
     border-radius: 30px;
@@ -85,7 +87,11 @@ h1, h2, h3 {
 }
 
 .splashy section p {
-    margin-bottom: -10px !important;
+    margin-bottom: -10px;
+}
+
+.splashy section p.taller {
+    margin-bottom: -5px;
 }
 
 #go_div {
@@ -146,7 +152,7 @@ button {
 
 .more_buttons {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
 }
 
 .griddy {
@@ -184,7 +190,7 @@ button {
 .griddy li strong {
 }
 
-.griddy .notice {
+.notice {
     color: #cca933;
 }
 

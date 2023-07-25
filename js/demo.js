@@ -68,10 +68,15 @@ const audio_manager = {
     audio_controls: document.getElementById("audio_controls"),
     audio_timeout: null,
     end_time: 0,
+    play_intro: function() {
+        this.audio_controls.src="audio/ramp_up.mp3"
+        this.audio_controls.play()
+    },
     go: function () {
+        this.audio_controls.src="audio/vaccine21.mp3"
         const start_time=demo_data.audio_start_times[sentiment_manager.sentiment]-3
         this.end_time=demo_data.audio_end_times[sentiment_manager.sentiment]+6
-        dbugger.print(`Start: ${start_time}, End: ${this.end_time}`,true)
+        dbugger.print(`Start: ${start_time}, End: ${this.end_time}`,false)
         this.audio_timeout = setTimeout(audio_ended,(this.end_time-start_time)*1000)
         this.audio_controls.currentTime = start_time
         this.audio_controls.play()
@@ -192,6 +197,7 @@ const go = function(e) {
     sentiment_manager.go()
 }
 display_manager.go_button.onclick = function() {
+    audio_manager.play_intro()
     display_manager.go()
     reset_camera=true
     let t = setInterval(function() {

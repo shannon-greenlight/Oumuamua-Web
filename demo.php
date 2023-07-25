@@ -135,7 +135,7 @@
             <p style="text-align: right;padding-right: 5em;">-- Shannon Vance 2021</p>
         </div>
         <div class="more_buttons">
-            <button id="more_about" class="more_button" target="section_2">More</button>
+            <button id="more_about" class="more_button" target="section_2">More About the Tech</button>
         </div>
     </section>
 
@@ -150,10 +150,10 @@
             </ul>
         </div>
         <div>
-            <p>There are two Controllers, one for the Live System and one for the Demo. The Live System's controller is based on Node-Red while the Demo's controller is pure JavaScript that runs in a browser.
+            <p class="taller">There are two Controllers, one for the Live System and one for the Demo. The Live System's controller is based on Node-Red while the Demo's controller is pure JavaScript that runs in a browser.
             Below is a screen shot of the top-level Node-Red program. </p>
             <div class="flexer">
-                <p class="img_div"><img class="about_img" src="img/about/node_red.png" alt="The Node-Red Controller" title="Click to Enlarge" height="200px" />The Node-Red Controller</p>
+                <p class="img_div"><img class="about_img" src="img/about/node_red2.png" alt="The Node-Red Controller" title="Click to Enlarge" height="200px" />The Node-Red Controller</p>
                 <div>
                     <p>The Node-Red Controller is responsible for collecting Twitter data and rating their sentiment, then sending the matching script to the Synthesizer and the data to the Web Page. Tweets can come in faster than they can be displayed, so a queue is used to moderate the data.</p>
                     <p>Every Tweet that is displayed is also saved to a MongoDB database. It is this data that is used to generate the sentiment distribution charts. An example of these appears in the demo.</p>
@@ -176,8 +176,8 @@
                 The Spankulators execute scripts which are sent by the Node-Red Controller via a REST Post operation. One Spankulator serves as the Rhythm section and is connected to the Moog DFAM and the 2hp Kick module.
                 The other Spankulator drives the Melody. It is connected to the Moog Mother-32 VCO and some other functions.
             </p>
-            <p>
-                The audio from the Web Page that reads the Tweet is fed into the Mother-32 and mixed with the synth signal. This is fed into the TipTop EchoZ. The output of the EchoZ and the Rhythm track are mixed as the final output.
+            <p class="taller">
+                The audio from the Web Page that reads the Tweet is fed into the Mother-32 and mixed with the synth signal. The mix is fed into the TipTop EchoZ. The output of the EchoZ and the Rhythm track are mixed as the final output.
             </p>
         </div>
         <div>
@@ -235,28 +235,20 @@
             </div>
             <p>
                 The 3-d objects seen in the Display page were created from one of three JavaScript classes: Planet, MovingObject or StarField.
-                All classes specify the type of 3-d object, where it is in space, what it looks like, etc. The stars rotate slowly in the sky making them blink.
-                Each planet just rotates around its axis at a specified rate.
+                All three classes specify the type of object, where it is in space, what it looks like, etc. The stars rotate slowly in the sky making them blink.
+                Each planet just rotates around its axis at a specified rate. MovingObjects (shooting stars and Oumuamua) travel from one place in 3-d space to another.
+                MovingObjects have methods to set the starting position, to move, to pause and resume movement as well as a method to rotate on 3 axes instead of just one.
             </p>
             <p>
-                MovingObjects travel from one place in 3-d space to another. The shooting stars and Oumuamua itself are MovingObjects.
-
+                Linear Algebra makes a bit more sense after programming for 3-d. And this project has introduced me to <em>Quaternions</em> and <em>lerping</em>. 😎
             </p>
-            <ul>
-                <li>
-                    Init() - places object at the starting point.
-                </li>
-                <li>
-                    Move() - moves object one step closer to end point. Stops moving and sends message when at end point.
-                </li>
-            </ul>
         </div>
         <div class="more_buttons">
             <button class="more_button" target="section_3">Back</button>
             <button class="more_button" target="section_1">Next</button>
         </div>
     </section>
-    <p id="exit_prompt">Press <strong>a</strong> to exit this screen</p>
+    <p id="exit_prompt" class="notice">Press <strong>a</strong> to exit this screen</p>
 </div>
 
 <div id="splash" class="splashy">
